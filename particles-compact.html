@@ -9,8 +9,8 @@ k.arc(this.x,this.y,2,0,6.28)
 k.fillStyle=`rgb(${this.color})`
 k.fill()}
 p=[]
-for(i=0;i<u*6;i++){x=i%u*2,y=Math.random()*u,c=[(Math.random()>.5)*u,(Math.random()>.5)*u,(Math.random()>.5)*u]
-p.push(new t(x,y,c))}function h(){requestAnimationFrame(h)
+for(i=0;i<u*6;i++){x=i%u*2,y=Math.random()*u,c=[((i%4)>=2)*u,((i%6)>=3)*u,((i%8)>=4)*u]
+p.push(new P(x,y,c))}function h(){requestAnimationFrame(h)
 k.clearRect(0,0,u*2,u)
 p.forEach(c=>{c.d()
 p.forEach(a=>{if(c!=a){let t=Math.sqrt((c.x-a.x)**2+(c.y-a.y)**2),i=Math.sqrt((c.color[0]-a.color[0])**2+(c.color[1]-a.color[1])**2+(c.color[2]-a.color[2])**2),h=1e-4
