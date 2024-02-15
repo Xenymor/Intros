@@ -4,7 +4,7 @@ k=c.getContext("2d")
 u=255
 c.width=u*2
 c.height=u
-function P(x,y,c){[this.x,this.y,this.o,this.t,this.i]=[x,y,c,0,0]}
+function P(x,y,c){t=this;[t.x,t.y,t.o,t.t,t.i]=[x,y,c,0,0]}
 p=[]
 for(i=0;i<u*6;i++){x=i%u*2,y=(i/5)%u,c=[((i%4)>=2)*u,((i%6)>=3)*u,((i%8)>=4)*u]
 p.push(new P(x,y,c))}function a(){requestAnimationFrame(a)
