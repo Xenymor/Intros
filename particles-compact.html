@@ -13,9 +13,9 @@ p.forEach(c=>{k.beginPath()
 k.arc(c.x,c.y,2,0,6.3)
 k.fillStyle=`rgb(${c.o})`
 k.fill()
-p.forEach(a=>{let t=Math.sqrt((c.x-a.x)**2+(c.y-a.y)**2),i=Math.sqrt((c.o[0]-a.o[0])**2+(c.o[1]-a.o[1])**2+(c.o[2]-a.o[2])**2),h=1e-4
-c.t+=(c.x-a.x)*h/(t+h)*(i/u-1)*-2
-c.i+=(c.y-a.y)*h/(t+h)*(i/u-.5)*-2})
+p.forEach(a=>{let d=Math.sqrt((c.x-a.x)**2+(c.y-a.y)**2),i=Math.sqrt((c.o[0]-a.o[0])**2+(c.o[1]-a.o[1])**2+(c.o[2]-a.o[2])**2),h=1e-4
+c.t+=(c.x-a.x)*h/(d+h)*(i/u-1)*-2
+c.i+=(c.y-a.y)*h/(d+h)*(i/u-.5)*-2})
 c.x+=c.t
 c.y+=c.i
 if(c.x<0|c.x>u*2)c.x-=c.t
