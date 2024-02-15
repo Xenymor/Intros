@@ -1,0 +1,71 @@
+<body><script>let canvas = document.createElement('canvas');
+  document.body.appendChild(canvas);
+  let ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth/3*2;
+  canvas.height = window.innerHeight/3*2;
+  
+  function Particle(x, y, size, color) {
+    this.x = x;
+    this.y = y;
+    this.size = size;
+    this.color = color;
+    this.vx = Math.random() * 2 - 1; // Random velocity in x direction
+    this.vy = Math.random() * 2 - 1; // Random velocity in y direction
+  }
+  
+  Particle.prototype.draw = function() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = "rgb(" + this.color[0] + "," + this.color[1] + "," + this.color[2] + ")";
+    ctx.fill();
+  };
+  
+  // Calculate color similarity (Euclidean distance between two colors)
+  function colorDistance(color1, color2) {
+    let r1 = color1[0];
+    let g1 = color1[1];
+    let b1 = color1[2];
+    let r2 = color2[0];
+    let g2 = color2[1];
+    let b2 = color2[2];
+    return Math.sqrt(Math.pow(r2 - r1, 2) + Math.pow(g2 - g1, 2) + Math.pow(b2 - b1, 2));
+  }
+  
+  let particles = [];
+  for (let i = 0; i < 1500; i++) {
+    let x = Math.random() * canvas.width;
+    let y = Math.random() * canvas.height;
+    let size = Math.random() * 10;
+    let color = [(Math.random()>0.5) * 255,(Math.random()>0.5) * 255,(Math.random()>0.5) * 255];
+    particles.push(new Particle(x, y, size, color));
+  }
+  
+  function animate() {
+    requestAnimationFrame(animate);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(particle => {
+      particle.draw();
+      particles.forEach(otherParticle => {
+        if (particle != otherParticle) {
+          let dist = Math.sqrt(Math.pow(particle.x - otherParticle.x, 2) + Math.pow(particle.y - otherParticle.y, 2));
+          let colorDist = colorDistance(particle.color, otherParticle.color);
+          let repulsionStrength = 0.0001; // Adjust the repulsion strength
+          particle.vx += (particle.x - otherParticle.x) * repulsionStrength / dist * (colorDist/255-0.5) * -2;
+          particle.vy += (particle.y - otherParticle.y) * repulsionStrength / dist * (colorDist/255-0.5) * -2;
+        }
+      });
+      // Update particle position based on velocity
+      particle.x += particle.vx;
+      particle.y += particle.vy;
+      if (particle.x < 0 || particle.x > canvas.width) {
+        particle.x -= particle.vx;
+      }
+      if (particle.y < 0 || particle.y > canvas.height) {
+        particle.y -= particle.vy;
+      }
+    });
+  }
+  
+  animate();
+  
+</script></body>
