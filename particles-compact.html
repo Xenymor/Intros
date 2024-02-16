@@ -13,8 +13,7 @@ p.forEach(((t,j)=>{k.beginPath()
 k.arc(t.x,t.y,2,0,6)
 k.fillStyle=`rgb(${(t.x+j)%u},${t.y%u},127)`
 k.fill()
-p.forEach((a,l)=>{let d=Math.sqrt((c.x-a.x)**2+(c.y-a.y)**2),e=Math.abs(j-l),k=2e-5,n=k/(d+k)*(e/u-1)
-c.t-=(c.x-a.x)*n
-c.u-=(c.y-a.y)*n})
-c.x+=c.t
-c.y+=c.u})})</script>p=[]
+p.forEach(((a,l)=>{let d=h/(Math.sqrt((t.x-a.x)**2+(t.y-a.y)**2)+h)*(Math.abs(j-l)/u-1)
+t.t-=(t.x-a.x)*d
+t.u-=(t.y-a.y)*d}))
+t.x+=t.t,t.y+=t.u}))}))</script>
