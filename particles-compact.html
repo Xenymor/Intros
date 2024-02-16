@@ -1,18 +1,13 @@
-<body><script>q=document
-c=q.body.appendChild(q.createElement("canvas"))
-k=c.getContext("2d")
-u=255
+<body><canvas></canvas><script>e=document.body.firstChild.getContext("2d")
 w=300
 h=2e-5
 p=[]
-for(i=0;i<6*u;i++)p.push({x:i%w,y:i**2%w/2,t:0,u:0})
-setInterval(()=>{k.clearRect(0,0,w,w)
-p.forEach((t,j)=>{k.beginPath()
-k.arc(t.x,t.y,1,0,6)
-k.fillStyle=`rgb(${(t.x+j)%u},${t.y%u},9)`
-k.fill()
-p.forEach((a,l)=>{l=h/(Math.sqrt((t.x-a.x)**2+(t.y-a.y)**2)+h)*(Math.abs(j-l)/u-1)
-t.t-=(t.x-a.x)*l
-t.u-=(t.y-a.y)*l})
+for(t=0;t<4*w;t++)p.push({x:t%w,y:t**2%w/2,t:0,u:0})
+setInterval(()=>{e.clearRect(0,0,w,w)
+p.forEach((t,j)=>{e.fillStyle=`#${j}`
+e.fillRect(t.x,t.y,1,1)
+p.forEach((a,l)=>{let b=t.x-a.x,c=t.y-a.y;l=h/(b**2+c**2+h)**.5*Math.abs(j-l)/w
+t.t-=b*l
+t.u-=c*l})
 t.x+=t.t
 t.y+=t.u})})</script>
