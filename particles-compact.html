@@ -7,8 +7,7 @@ c.width=w
 c.height=u
 function P(x,y){t=this;[t.x,t.y,t.t,t.u]=[x,y,0,0]}p=[]
 for(i=0;i<u*6;i++){x=i%w
-p.push(new P(x,(i*x)%u))}setInterval(()=>{
-k.clearRect(0,0,w,u)
+p.push(new P(x,i*x%u))}setInterval(()=>{k.clearRect(0,0,w,u)
 p.forEach((c,j)=>{k.beginPath()
 k.arc(c.x,c.y,2,0,6)
 k.fillStyle=`rgb(${(c.x+j)%u},${(c.y)%u},${127})`
