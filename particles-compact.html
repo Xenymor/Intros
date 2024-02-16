@@ -5,7 +5,7 @@ u=255
 w=u*2
 c.width=w
 c.height=u
-function P(x,y,){t=this;[t.x,t.y,t.t,t.i]=[x,y,0,0]}
+function P(x,y){t=this;[t.x,t.y,t.t,t.i]=[x,y,0,0]}
 p=[]
 for(i=0;i<u*6;i++){x=i%w
 p.push(new P(x,(i*x)%u))}setInterval(()=>{
