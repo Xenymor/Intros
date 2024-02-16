@@ -8,12 +8,12 @@ c.height=u
 h=2e-5
 p=[]
 for(i=0;i<6*u;i++)x=i%w,p.push(new P(x,i*x%u))
-setInterval((()=>{k.clearRect(0,0,w,u)
-p.forEach(((t,j)=>{k.beginPath()
+setInterval(()=>{k.clearRect(0,0,w,u)
+p.forEach((t,j)=>{k.beginPath()
 k.arc(t.x,t.y,2,0,6)
 k.fillStyle=`rgb(${(t.x+j)%u},${t.y%u},127)`
 k.fill()
-p.forEach(((a,l)=>{let d=h/(Math.sqrt((t.x-a.x)**2+(t.y-a.y)**2)+h)*(Math.abs(j-l)/u-1)
+p.forEach((a,l)=>{let d=h/(Math.sqrt((t.x-a.x)**2+(t.y-a.y)**2)+h)*(Math.abs(j-l)/u-1)
 t.t-=(t.x-a.x)*d
-t.u-=(t.y-a.y)*d}))
-t.x+=t.t,t.y+=t.u}))}))</script>
+t.u-=(t.y-a.y)*d})
+t.x+=t.t,t.y+=t.u})})</script>
