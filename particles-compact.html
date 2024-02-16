@@ -2,21 +2,17 @@
 c=q.body.appendChild(q.createElement("canvas"))
 k=c.getContext("2d")
 u=255
-c.width=u*2
-c.height=u
-function P(x,y,c){t=this;[t.x,t.y,t.o,t.t,t.i]=[x,y,c,0,0]}
+w=300
+h=2e-5
 p=[]
-for(i=0;i<u*6;i++){x=i%u*2
-p.push(new P(x,(i*x)%u,[((i%4)>=2)*u,((i%6)>=3)*u,((i%8)>=4)*u]))}function a(){requestAnimationFrame(a)
-k.clearRect(0,0,u*2,u)
-p.forEach(c=>{k.beginPath()
-k.arc(c.x,c.y,2,0,6)
-k.fillStyle=`rgb(${c.o})`
+for(i=0;i<6*u;i++)p.push({x:i%w,y:i**2%w/2,t:0,u:0})
+setInterval(()=>{k.clearRect(0,0,w,w)
+p.forEach((t,j)=>{k.beginPath()
+k.arc(t.x,t.y,1,0,6)
+k.fillStyle=`rgb(${(t.x+j)%u},${t.y%u},9)`
 k.fill()
-p.forEach(a=>{let d=Math.sqrt((c.x-a.x)**2+(c.y-a.y)**2),i=Math.sqrt((c.o[0]-a.o[0])**2+(c.o[1]-a.o[1])**2+(c.o[2]-a.o[2])**2),h=1e-4
-c.t+=(c.x-a.x)*h/(d+h)*(i/u-1)*-2
-c.i+=(c.y-a.y)*h/(d+h)*(i/u-.5)*-2})
-c.x+=c.t
-c.y+=c.i
-if(c.x<0|c.x>u*2)c.x-=c.t
-if(c.y<0|c.y>u)c.y-=c.i})}a()</script>
+p.forEach((a,l)=>{l=h/(Math.sqrt((t.x-a.x)**2+(t.y-a.y)**2)+h)*(Math.abs(j-l)/u-1)
+t.t-=(t.x-a.x)*l
+t.u-=(t.y-a.y)*l})
+t.x+=t.t
+t.y+=t.u})})</script>ipt>
