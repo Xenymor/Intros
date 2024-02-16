@@ -5,8 +5,7 @@ u=255
 w=u*2
 c.width=w
 c.height=u
-function P(x,y){t=this;[t.x,t.y,t.t,t.i]=[x,y,0,0]}
-p=[]
+function P(x,y){t=this;[t.x,t.y,t.t,t.u]=[x,y,0,0]}p=[]
 for(i=0;i<u*6;i++){x=i%w
 p.push(new P(x,(i*x)%u))}setInterval(()=>{
 k.clearRect(0,0,w,u)
@@ -18,4 +17,4 @@ p.forEach((a,l)=>{let d=Math.sqrt((c.x-a.x)**2+(c.y-a.y)**2),i=Math.abs(j-l),h=2
 c.t-=(c.x-a.x)*n
 c.i-=(c.y-a.y)*n})
 c.x+=c.t
-c.y+=c.i})})</script>
+c.y+=c.i})})</script>p.forEach((t,c)=>{let i=Math.sqrt((a.x-t.x)**2+(a.y-t.y)**2),e=Math.abs(w-c),k=2e-5,n=k/(i+k)*(e/u-1)
