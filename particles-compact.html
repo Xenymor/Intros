@@ -1,22 +1,13 @@
-<body><script>q=document
-c=q.body.appendChild(q.createElement("canvas"))
-k=c.getContext("2d")
-u=255
-c.width=u*2
-c.height=u
-function P(x,y,c){t=this;[t.x,t.y,t.o,t.t,t.i]=[x,y,c,0,0]}
+<body><canvas></canvas><script>e=document.body.firstChild.getContext("2d")
+a=300
+h=2e-5
 p=[]
-for(i=0;i<u*6;i++){x=i%u*2
-p.push(new P(x,(i*x)%u,[((i%4)>=2)*u,((i%6)>=3)*u,((i%8)>=4)*u]))}function a(){requestAnimationFrame(a)
-k.clearRect(0,0,u*2,u)
-p.forEach(c=>{k.beginPath()
-k.arc(c.x,c.y,2,0,6)
-k.fillStyle=`rgb(${c.o})`
-k.fill()
-p.forEach(a=>{let d=Math.sqrt((c.x-a.x)**2+(c.y-a.y)**2),i=Math.sqrt((c.o[0]-a.o[0])**2+(c.o[1]-a.o[1])**2+(c.o[2]-a.o[2])**2),h=1e-4
-c.t+=(c.x-a.x)*h/(d+h)*(i/u-1)*-2
-c.i+=(c.y-a.y)*h/(d+h)*(i/u-.5)*-2})
-c.x+=c.t
-c.y+=c.i
-if(c.x<0|c.x>u*2)c.x-=c.t
-if(c.y<0|c.y>u)c.y-=c.i})}a()</script>
+for(t=0;t<4*a;t++)p.push({x:t%a,e:t**2%a/2,t:0,u:0})
+setInterval(()=>{e.clearRect(0,0,a,a)
+p.forEach((t,j)=>{e.fillStyle=`#${j}`
+e.fillRect(t.x,t.e,1,1)
+p.forEach((x,l)=>{let b=t.x-x.x,c=t.e-x.e;l=h/(b**2+c**2+h)**.5*Math.abs(j-l)/a
+t.t-=b*l
+t.u-=c*l})
+t.x+=t.t
+t.e+=t.u})})</script>
