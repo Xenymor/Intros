@@ -1,13 +1,13 @@
 <body><canvas></canvas><script>e=document.body.firstChild.getContext("2d")
-w=300
+a=300
 h=2e-5
 p=[]
-for(t=0;t<4*w;t++)p.push({x:t%w,y:t**2%w/2,t:0,u:0})
-setInterval(()=>{e.clearRect(0,0,w,w)
+for(t=0;t<4*a;t++)p.push({x:t%a,e:t**2%a/2,t:0,u:0})
+setInterval(()=>{e.clearRect(0,0,a,a)
 p.forEach((t,j)=>{e.fillStyle=`#${j}`
-e.fillRect(t.x,t.y,1,1)
-p.forEach((a,l)=>{let b=t.x-a.x,c=t.y-a.y;l=h/(b**2+c**2+h)**.5*Math.abs(j-l)/w
+e.fillRect(t.x,t.e,1,1)
+p.forEach((x,l)=>{let b=t.x-x.x,c=t.e-x.e;l=h/(b**2+c**2+h)**.5*Math.abs(j-l)/a
 t.t-=b*l
 t.u-=c*l})
 t.x+=t.t
-t.y+=t.u})})</script>
+t.e+=t.u})})</script>
