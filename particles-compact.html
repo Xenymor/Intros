@@ -5,12 +5,13 @@ u=255
 w=2*u
 c.width=w
 c.height=u
-function P(x,y){t=this;[t.x,t.y,t.t,t.u]=[x,y,0,0]}p=[]
-for(i=0;i<u*6;i++){x=i%w
-p.push(new P(x,i*x%u))}setInterval(()=>{k.clearRect(0,0,w,u)
-p.forEach((c,j)=>{k.beginPath()
-k.arc(c.x,c.y,2,0,6)
-k.fillStyle=`rgb(${(c.x+j)%u},${c.y%u},${127})`
+h=2e-5
+p=[]
+for(i=0;i<6*u;i++)x=i%w,p.push(new P(x,i*x%u))
+setInterval((()=>{k.clearRect(0,0,w,u)
+p.forEach(((t,j)=>{k.beginPath()
+k.arc(t.x,t.y,2,0,6)
+k.fillStyle=`rgb(${(t.x+j)%u},${t.y%u},127)`
 k.fill()
 p.forEach((a,l)=>{let d=Math.sqrt((c.x-a.x)**2+(c.y-a.y)**2),e=Math.abs(j-l),k=2e-5,n=k/(d+k)*(e/u-1)
 c.t-=(c.x-a.x)*n
