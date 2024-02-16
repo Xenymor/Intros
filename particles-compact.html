@@ -7,7 +7,7 @@ c.width=w
 c.height=u
 h=2e-5
 p=[]
-for(i=0;i<6*u;i++)x=i%w,p.push(new P(x,i*x%u))
+for(i=0;i<6*u;i++)p.push(new P(i%w,i**2%u))
 setInterval(()=>{k.clearRect(0,0,w,u)
 p.forEach((t,j)=>{k.beginPath()
 k.arc(t.x,t.y,2,0,6)
