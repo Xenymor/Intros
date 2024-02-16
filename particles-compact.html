@@ -1,4 +1,4 @@
-<body><script>function P(x,y){t=this,[t.x,t.y,t.t,t.u]=[x,y,0,0]}c=(q=document).body.appendChild(q.createElement("canvas"))
+<body><script>c=(q=document).body.appendChild(q.createElement("canvas"))
 k=c.getContext("2d")
 u=255
 w=2*u
@@ -6,7 +6,7 @@ c.width=w
 c.height=u
 h=2e-5
 p=[]
-for(i=0;i<6*u;i++)p.push(new P(i%w,i**2%u))
+for(i=0;i<6*u;i++)p.push({x:i%w,y:i**2%u,t:0,u:0})
 setInterval(()=>{k.clearRect(0,0,w,u)
 p.forEach((t,j)=>{k.beginPath()
 k.arc(t.x,t.y,2,0,6)
