@@ -1,0 +1,25 @@
+<body>
+    <script>
+        for (i = 999; i--;) {
+            const d = document.body.appendChild(document.createElement("div"));
+            d.t = Math.random() * 6.28;
+            d.s = 5 + Math.random() * 10;
+            d.v = 2 + Math.random() * 2;
+            d.x = innerWidth / 2;
+            d.y = innerHeight / 2;
+            d.style.position = "fixed";
+            d.style.width = "4px";
+            d.style.height = "4px";
+            d.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            (function p() {
+                d.x += Math.cos(d.t) * d.v;
+                d.y += Math.sin(d.t) * d.v;
+                d.v -= 0.05;
+                d.style.left = d.x + "px";
+                d.style.top = d.y + "px";
+                if (d.v > 0) requestAnimationFrame(p);
+                else d.remove();
+            })();
+        }
+    </script>
+</body>
